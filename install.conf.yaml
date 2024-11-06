@@ -24,9 +24,6 @@
         glob: true
     ~/.vimrc: config/vim/vimrc
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-
 # - create:
 #     - ~/downloads
 #     - ~/.vim/undo-history

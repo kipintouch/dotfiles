@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+
+# Some useful options (man zshoptions)
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+# stty stop undef # Disable ctrl-s to freeze terminal.
+
+# Disable highlighting paste text.
+zle_highlight=('paste:none')
+
+# completions
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+# zstyle ':completion:complete:lsof:*' menu yes select
+
+# compinit
+zmodload zsh/complist
+_comp_options+=(globdots) # Include hidden files.
+
+# Up-And-Down Arrow for searching history.
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Colors
+autoload -Uz colors && colors
+
+# Zsh AutoLoad / FPATH
+# source: https://stackoverflow.com/a/63661686
+() {
+    # add our local functions dir to the fpath
+    local funcs=$HOME/.config/zsh/functions
+
+    # FPATH is already tied to fpath, but this adds
+    # a uniqueness constraint to prevent duplicate entries
+    typeset -TUg +x FPATH=$funcs:$FPATH fpath
+
+    # Now autoload them
+    if [[ -d $funcs ]]; then
+        autoload ${=$(cd "$funcs" && echo *)}
+    fi
+}
+
+# Source common configuration.
+[ -f $HOME/.config/shell/common ] && source $HOME/.config/shell/common

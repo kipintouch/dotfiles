@@ -1,0 +1,59 @@
+# SHELL NAME
+export MY_SHELL="$(ps -hp $$ -o comm)"
+
+# History configuration
+# for setting history length see HISTSIZE and HISTFILESIZE in shell
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Local configuration
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# SOURCE ALIASES
+if [ -f "$HOME/.config/shell/aliases" ]; then
+  source "$HOME/.config/shell/aliases"
+fi
+
+# starship configuration
+if command -v starship &>/dev/null; then
+  eval "$(starship init $MY_SHELL)"
+fi
+
+# Bat aliases
+if command -v bat &>/dev/null; then
+  export BAT_THEME='OneHalfLight'
+
+  # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
+  alias cat='bat --paging=auto --style header --style snip --style changes --style header'
+
+  # in your .bashrc/.zshrc/*rc
+  help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+  }
+
+  if [[ $MY_SHELL == "zsh" ]]; then
+    alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+    alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+  fi
+fi
+
+# Color print for hex codes.
+colprint() (
+   text="${1#'[#'??????']'}"
+   r="${1%"$text"}"
+   r="${r%']'}"
+   r="${r#'[#'}"
+   r="${r:-FFFFFF}"
+   b="${r#????}"
+   r="${r%??}"
+   g="${r#??}"
+   r="${r%??}"
+   printf '\e[38;2;%d;%d;%dm%s\e[0m\n' "0x$r" "0x$g" "0x$b" "$text"
+)
+

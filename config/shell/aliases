@@ -1,0 +1,59 @@
+
+# Replace classic tools with modern alternatives
+if command -v eza &>/dev/null; then
+  alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
+  alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
+  alias ll='eza -l --color=always --group-directories-first --icons'  # long format
+  alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
+  alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+else
+  alias ls='ls --color=auto'
+  # alias dir='dir --color=auto'
+  # alias vdir='vdir --color=auto'
+  alias la='ls   -a '   # all files and dirs
+  alias ll='ls   -l '   # long format
+  alias lt='ls  -aT '   # tree listing
+  alias l.='ls -ald .*' # show only dotfiles
+fi
+
+# Commonly useful alias
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# Colorfull dir
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+# Updating grep.
+alias grep='grep --color=auto'
+alias egrep='grep -E --color=auto'
+alias fgrep='grep -F --color=auto'
+
+# ip color.
+alias ip='ip -color'
+
+# Helper ps
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+# Helper tar.
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+
+# WGET
+alias wget='wget -c '
+
+# NeoVim Alias
+alias lvim='XDG_CACHE_HOME=${_NVIM_ROOT:-/opt/LazyVim}/cache XDG_CONFIG_HOME=${_NVIM_ROOT:-/opt/LazyVim}/config XDG_DATA_HOME=${_NVIM_ROOT:-/opt/LazyVim}/share nvim '
+
+# Tmux helper configuration.
+if command -v tmux &>/dev/null; then
+  alias tl='tmux -2u list'
+  alias ta='tmux -2u attach || tmux -2u '
+  alias tn='tmux -2u new-session '
+  alias tk='tmux kill-server '
+  alias ts='tmux kill-session -t '
+fi

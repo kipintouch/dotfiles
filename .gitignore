@@ -1,0 +1,3 @@
+config/**/.zshrc
+config/**/*zcompdump
+config/**/*zwc

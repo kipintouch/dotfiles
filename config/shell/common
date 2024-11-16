@@ -27,6 +27,7 @@ fi
 
 # Bat aliases
 if command -v bat &>/dev/null; then
+  # BAT LIGHT THEME
   export BAT_THEME='OneHalfLight'
 
   # bat --list-themes | fzf --preview="bat --theme={} --color=always /path/to/file"
@@ -36,11 +37,13 @@ if command -v bat &>/dev/null; then
   help() {
     "$@" --help 2>&1 | bat --plain --language=help
   }
-
   if [[ $MY_SHELL == "zsh" ]]; then
     alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
     alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
   fi
+
+  # CHANGE MANPAGES TO USE BAT
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'" MANROFFOPT="-c"
 fi
 
 # Color print for hex codes.

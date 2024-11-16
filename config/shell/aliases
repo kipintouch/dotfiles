@@ -51,9 +51,9 @@ alias lvim='XDG_CACHE_HOME=${_NVIM_ROOT:-/opt/LazyVim}/cache XDG_CONFIG_HOME=${_
 
 # Tmux helper configuration.
 if command -v tmux &>/dev/null; then
-  alias tl='tmux -2u list'
-  alias ta='tmux -2u attach || tmux -2u '
-  alias tn='tmux -2u new-session '
-  alias tk='tmux kill-server '
-  alias ts='tmux kill-session -t '
+  alias tl='tmux -2u list-sessions'
+  alias ta='tmux -2u set -g default-command $MY_SHELL \; new-session -A -s0'
+  alias tn='tmux -2u set -g default-command $MY_SHELL \; new-session '
+  alias tk='tmux -2u kill-server '
+  alias ts='tmux -2u kill-session -t '
 fi

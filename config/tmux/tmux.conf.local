@@ -399,6 +399,7 @@ bind c new-window -c '#{pane_current_path}' #!important
 # move status line to top
 # set -g status-position top
 
+# set-hook -g pane-set-clipboard[0] "run-shell '(tmux popup -b rounded -E echo \"Array 0\")'"
 
 # -- tpm -----------------------------------------------------------------------
 

@@ -16,6 +16,9 @@
     ~/.config/alacritty:
         path: config/alacritty/**
         glob: true
+    config/zsh/plugins/zsh-autosuggestions: repos/zsh-autosuggestions
+    config/zsh/plugins/fast-syntax-highlighting: repos/fast-syntax-highlighting
+    config/zsh/plugins/zsh-autocomplete: repos/zsh-autocomplete
     ~/.config/zsh/:
         path: config/zsh/**
         glob: true

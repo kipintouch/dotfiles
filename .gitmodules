@@ -6,3 +6,12 @@
 	path = repos/oh-my-tmux
 	url = https://github.com/gpakosz/.tmux.git
   ignore = dirty
+[submodule "repos/fast-syntax-highlighting"]
+	path = repos/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+[submodule "repos/zsh-autocomplete"]
+	path = repos/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "repos/zsh-autosuggestions"]
+	path = repos/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

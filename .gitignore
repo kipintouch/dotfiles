@@ -1,3 +1,6 @@
 config/**/.zshrc
 config/**/*zcompdump
 config/**/*zwc
+config/zsh/plugins/zsh-autosuggestions
+config/zsh/plugins/fast-syntax-highlighting
+config/zsh/plugins/zsh-autocomplete

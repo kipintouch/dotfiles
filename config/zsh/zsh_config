@@ -44,3 +44,23 @@ autoload -Uz colors && colors
 
 # Source common configuration.
 [ -f $HOME/.config/shell/common ] && source $HOME/.config/shell/common
+
+# Source Plugins
+_LOAD_ZSH_PLUGINS=${_LOAD_ZSH_PLUGINS:-1}
+if [ $_LOAD_ZSH_PLUGINS -eq 1 ]
+then
+
+  # ssh-agent settings
+  zstyle :plugins:ssh-agent agent-forwarding yes
+  zstyle :plugins:ssh-agent lazy yes
+  zstyle :plugins:ssh-agent quiet yes
+
+  for plug in git ssh-agent zsh-autosuggestions zsh-syntax-highlighting
+  do
+    if [ -f "$HOME/.config/zsh/plugins/${plug}.plugin.zsh" ]; then
+      source "$HOME/.config/zsh/plugins/${plug}.plugin.zsh"
+    elif [ -f "$HOME/.config/zsh/plugins/${plug}/${plug}.plugin.zsh" ]; then
+      source "$HOME/.config/zsh/plugins/${plug}/${plug}.plugin.zsh"
+    fi
+  done
+fi

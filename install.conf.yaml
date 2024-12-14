@@ -5,8 +5,8 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/ssh-agent/ssh-agent.plugin.zsh -O config/zsh/plugins/ssh-agent.plugin.zsh, Loading omz plugin 'ssh-agent']
-    - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/git/git.plugin.zsh -O config/zsh/plugins/git.plugin.zsh,                   Loading omz plugin 'git']
+    - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/ssh-agent/ssh-agent.plugin.zsh -O config/zsh/plugins/ssh-agent.plugin.zsh, Downloading omz plugin 'ssh-agent']
+    - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/git/git.plugin.zsh -O config/zsh/plugins/git.plugin.zsh, Downloading omz plugin 'git']
 
 - link:
     ~/.config/tmux/tmux.conf: repos/oh-my-tmux/.tmux.conf
@@ -16,9 +16,9 @@
     ~/.config/alacritty:
         path: config/alacritty/**
         glob: true
-    config/zsh/plugins/zsh-autosuggestions: repos/zsh-autosuggestions
-    config/zsh/plugins/fast-syntax-highlighting: repos/fast-syntax-highlighting
-    config/zsh/plugins/zsh-autocomplete: repos/zsh-autocomplete
+    # config/zsh/plugins/zsh-autosuggestions: repos/zsh-autosuggestions
+    # config/zsh/plugins/fast-syntax-highlighting: repos/fast-syntax-highlighting
+    # config/zsh/plugins/zsh-autocomplete: repos/zsh-autocomplete
     ~/.config/zsh/:
         path: config/zsh/**
         glob: true

@@ -4,7 +4,6 @@
         create: true
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
     - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/ssh-agent/ssh-agent.plugin.zsh -O config/zsh/plugins/ssh-agent.plugin.zsh, Downloading omz plugin 'ssh-agent']
     - [wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/refs/heads/master/plugins/git/git.plugin.zsh -O config/zsh/plugins/git.plugin.zsh, Downloading omz plugin 'git']
 
@@ -24,6 +23,9 @@
         glob: true
     ~/.config/git-config/:
         path: config/git-config/.*
+        glob: true
+    ${_NVIM_DATA_DIR}/config/nvim:
+        path: config/nvim
         glob: true
     ~/.vimrc: config/vim/vimrc
 

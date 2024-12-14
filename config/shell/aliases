@@ -46,9 +46,6 @@ alias untar='tar -zxvf '
 # WGET
 alias wget='wget -c '
 
-# NeoVim Alias
-alias lvim='XDG_CACHE_HOME=${_NVIM_ROOT:-/opt/LazyVim}/cache XDG_CONFIG_HOME=${_NVIM_ROOT:-/opt/LazyVim}/config XDG_DATA_HOME=${_NVIM_ROOT:-/opt/LazyVim}/share nvim '
-
 # Tmux helper configuration.
 if command -v tmux &>/dev/null; then
   alias tl='tmux -2u list-sessions'

@@ -1,0 +1,3 @@
+# ENV Variables
+export DATA_DIR=${_DATA_DIR:-/opt/}
+export NVIM_DATA_DIR=${_NVIM_DATA_DIR:-/opt/LazyVim}

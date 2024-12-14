@@ -8,6 +8,9 @@ DOTBOT_DIR="repos/dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+export _DATA_DIR=${DATA_DIR:-/opt/}
+export _NVIM_DATA_DIR=${NVIM_DATA_DIR:-/opt/LazyVim/}
+
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"

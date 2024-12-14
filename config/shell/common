@@ -1,6 +1,10 @@
 # SHELL NAME
 export MY_SHELL="$(ps -hp $$ -o comm)"
 
+# Source common env vars used by config
+export DATA_DIR=${_DATA_DIR:-/opt/}
+export NVIM_DATA_DIR=${_NVIM_DATA_DIR:-/opt/LazyVim}
+
 # History configuration
 # for setting history length see HISTSIZE and HISTFILESIZE in shell
 HISTSIZE=1000
@@ -46,6 +50,15 @@ if command -v bat &>/dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'" MANROFFOPT="-c"
 fi
 
+# Nvim aliases
+if command -v nvim &>/dev/null; then
+  _tmp_var="XDG_CONFIG_HOME=${NVIM_DATA_DIR}/config XDG_DATA_HOME=${NVIM_DATA_DIR}/share"
+  _tmp_var+=" XDG_CACHE_HOME=${NVIM_DATA_DIR}/cache "
+  alias vi="$_tmp_var  /usr/bin/nvim "
+  alias vim="$_tmp_var  /usr/bin/nvim "
+  alias nvim="$_tmp_var /usr/bin/nvim "
+fi
+
 # Color print for hex codes.
 colprint() (
    text="${1#'[#'??????']'}"
@@ -59,4 +72,3 @@ colprint() (
    r="${r%??}"
    printf '\e[38;2;%d;%d;%dm%s\e[0m\n' "0x$r" "0x$g" "0x$b" "$text"
 )
-
